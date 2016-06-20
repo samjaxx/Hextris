@@ -1,0 +1,28 @@
+import java.awt.Polygon;
+
+import java.util.ArrayList;
+
+class blocks{
+	
+	public blocks(int side){
+		Polygon block = new Polygon(); //create the blocks
+		
+	}
+	
+	private void createBlock(Polygon block, int side){
+		
+		
+	    
+	}
+	
+	/*private int[] createXPoints(int side){
+		ArrayList<Integer> XPoints = new ArrayList<Integer>();
+		return XPoints;
+	}
+	
+	private int[] createYPoints(int side){
+		ArrayList<Integer> YPoints = new ArrayList<Integer>();
+		return YPoints;
+	}*/
+	
+}

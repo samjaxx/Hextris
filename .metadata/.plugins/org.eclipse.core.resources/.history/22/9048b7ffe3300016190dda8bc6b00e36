@@ -1,0 +1,31 @@
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class graphicSettings extends JPanel implements ActionListener{
+	
+	Graphics2D graphics; //graphic settings of hextris
+	
+	Timer t = new Timer(5, (ActionListener) this);
+	
+	private Polygon bgHex, hex;
+	
+	public void start(){
+		t.start();
+		addHex();
+		
+	}
+	
+	private void addHex(){
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}

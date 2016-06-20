@@ -1,0 +1,52 @@
+import java.awt.Polygon;
+
+import java.util.ArrayList;
+
+public class blocks{
+	
+	private int orderNum; //keeps track of this block
+	private int colorNum; //keeps track of the color of this block
+	
+	public blocks(int color, int side, int num){
+		orderNum = num;
+		colorNum = color;
+		
+		Polygon block = new Polygon(); //create the blocks
+		block = createBlock(block, side);
+	}
+	
+	private Polygon createBlock(Polygon block, int side){
+		Polygon block = new Polygon(); //create the blocks
+	    for(int i = side; i < side + 2; i++){ //add coordinates for each vertex
+	    	block.addPoint((int) (height * Math.cos(i * 2 * Math.PI / 6)), (int) (height * Math.sin(i * 2 * Math.PI / 6)));
+	    }
+	    for(int i = side + 1; i > side - 1; i--){ 
+	    	block.addPoint((int) ((height - 30) * Math.cos(i * 2 * Math.PI / 6)), (int) ((height - 30) * Math.sin(i * 2 * Math.PI / 6)));
+	    }
+		
+		return block;
+	}
+	
+	public int getNum(){
+		return orderNum;
+	}
+	
+	public int getColor(){
+		return colorNum;
+	}
+	
+	public remove(){
+		
+	}
+	
+	/*private int[] createXPoints(int side){
+		ArrayList<Integer> XPoints = new ArrayList<Integer>();
+		return XPoints;
+	}
+	
+	private int[] createYPoints(int side){
+		ArrayList<Integer> YPoints = new ArrayList<Integer>();
+		return YPoints;
+	}*/
+	
+}

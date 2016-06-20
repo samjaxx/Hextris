@@ -1,0 +1,15 @@
+
+public class hextrisController {
+	
+	//private hextrisView view;
+	System.out.println("hV");
+	
+	private void turnHex(){
+		
+	}
+	
+	public void hextrisView(){
+		System.out.println("hC");
+	}
+	
+}

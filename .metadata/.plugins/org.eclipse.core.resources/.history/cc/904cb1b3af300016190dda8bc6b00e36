@@ -1,0 +1,23 @@
+import java.awt.EventQueue;
+
+public class Hextris {
+
+	public static void main(String[] args){
+		if(args.length == 0){
+			runGame();		}
+		else{
+			runGame();
+		}
+	}
+	
+	private static void runGame(){
+		EventQueue.invokeLater(new Runnable(){
+			public void run(){
+				hextrisView hV = new hextrisView();
+				hextrisController hC = new hextrisController();
+			}
+			
+		});
+	}
+	
+}

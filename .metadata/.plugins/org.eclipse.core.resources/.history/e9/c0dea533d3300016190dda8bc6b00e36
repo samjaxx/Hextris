@@ -1,0 +1,35 @@
+import java.awt.Polygon;
+
+import java.util.ArrayList;
+
+public class blocks{
+	
+	private int orderNum; //keeps track of this block
+	
+	public blocks(int colour, int side, int num){
+		Polygon block = new Polygon(); //create the blocks
+		
+		orderNum = num;
+	}
+	
+	private void createBlock(Polygon block, int side){
+		
+		
+	    
+	}
+	
+	private static int getNum(){
+		return orderNum;
+	}
+	
+	/*private int[] createXPoints(int side){
+		ArrayList<Integer> XPoints = new ArrayList<Integer>();
+		return XPoints;
+	}
+	
+	private int[] createYPoints(int side){
+		ArrayList<Integer> YPoints = new ArrayList<Integer>();
+		return YPoints;
+	}*/
+	
+}

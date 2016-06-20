@@ -1,0 +1,30 @@
+import java.awt.Polygon;
+
+import java.util.ArrayList;
+
+class blocks extends Polygon{
+	
+	public blocks(int[] polyXArray, int[] polyYArray, int side){
+		//Polygon block = new Polygon(); //create the blocks
+		super(polyXArray, polyYArray, 4);
+		
+	}
+	
+	private void createBlock(int side){
+		
+		
+	    
+	    
+	}
+	
+	private int[] createXPoints(int side){
+		ArrayList<Integer> XPoints = new ArrayList<Integer>();
+		return XPoints;
+	}
+	
+	private ArrayList<Integer> createYPoints(int side){
+		ArrayList<Integer> YPoints = new ArrayList<Integer>();
+		return YPoints;
+	}
+	
+}

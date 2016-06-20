@@ -1,0 +1,25 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
+public class hextrisView {
+	
+	JFrame newGame = new JFrame("Hextris");
+	graphicSettings gS = new graphicSettings();
+	
+	public hextrisView(){
+		System.out.println("hV");
+	}
+	
+	public void setFrame(JFrame frame){	//setting the frame
+		frame.setPreferredSize(new Dimension(1280, 720));	//set size of the game window
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		frame.pack();	// Display the window
+		frame.setVisible(true);		// Set visibility to be true
+		frame.setResizable(false);	//window cannot be resized
+	}
+	
+	
+}

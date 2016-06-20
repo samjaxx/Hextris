@@ -1,0 +1,63 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JFrame;
+
+public class hextrisView {
+	
+	JFrame newGame = new JFrame("Hextris");
+	graphicSettings gS = new graphicSettings();
+	
+	public hextrisView(){
+		setFrame(newGame);
+		addListeners(newGame);
+		//System.out.println("hV");
+	}
+	
+	private void setFrame(JFrame frame){	//setting the frame
+		frame.setPreferredSize(new Dimension(1280, 720));	//set size of the game window
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLayout(new BorderLayout());
+		frame.pack();	// Display the window
+		frame.setVisible(true);		// Set visibility to be true
+		frame.setResizable(false);	//window cannot be resized
+	}
+	
+	public void addListeners(JFrame frame){ //listens for left or right action
+		frame.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if(e.getKeyCode()==80){
+					//gS.pause = !gS.pause;
+				}
+				
+				//if(gS.x1 == 0 && gS.pause == false){ //make sure the hex isn't already rotating
+					if(e.getKeyCode()==37){ //if left is pushed
+						System.out.println("left");
+						//gS.left = true; //choose left
+						//gS.turn = true;
+					}
+					else if(e.getKeyCode()==39){ //if right is pushed
+						System.out.println("right");
+						//gS.left = false; //choose right
+						//gS.turn = true;
+					}
+				//}
+			}
+		});
+	}
+}
