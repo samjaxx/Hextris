@@ -1,15 +1,21 @@
+import java.awt.Color;
 import java.awt.Polygon;
 
 public class blocks{
 	
 	private int orderNum; //keeps track of this block
 	private int colorNum; //keeps track of the color of this block
+	private int side;
+	private int height = -250;
 	
-	public blocks(int color, int side, int num){
-		orderNum = num;
+	private Polygon block = new Polygon(); //create the blocks
+
+	
+	public blocks(int color, int side){
+		//orderNum = num;
 		colorNum = color;
+		this.side = side;
 		
-		Polygon block = new Polygon(); //create the blocks
 		block = createBlock(block, side);
 	}
 	
@@ -24,12 +30,43 @@ public class blocks{
 		return block;
 	}
 	
+	public Polygon getPolygon(){
+		return block;
+	}
+	
+	public int getSide(){
+		return side;
+	}
+	
 	public int getNum(){
 		return orderNum;
 	}
 	
-	public int getColor(){
+	public int getColorNum(){
 		return colorNum;
+	}
+	
+	public Color getColor(){
+		if(colorNum == 0){
+			return Color.RED;
+		}
+		else if(colorNum == 1){
+			return Color.BLUE;
+		}
+		else if(colorNum == 2){
+			return Color.YELLOW;
+		}
+		else{
+			return Color.GREEN;
+		}
+	}
+	
+	public int getHeight(){
+		return height;
+	}
+	
+	public void updateHeight(){
+		height += 0.5;
 	}
 	
 	public void remove(){

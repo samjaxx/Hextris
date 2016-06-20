@@ -5,6 +5,7 @@ import java.awt.Polygon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -15,17 +16,42 @@ public class graphicSettings extends JPanel implements ActionListener{
 	Timer t = new Timer(5, (ActionListener) this);
 	
 	private int rotation = 0;
+	private int blockDropper = 0;
 	
 	public int turn = 0;
 	
 	public boolean pause;
 	public boolean left;
 	
+	ArrayList<blocks> blocksAL = new ArrayList<blocks>();
+	
 	private Polygon bgHex, hex;
 	
 	public void addHex(Polygon bgHex, Polygon hex){
 		this.bgHex = bgHex;
 		this.hex = hex;
+	}
+	
+	private void blockDropper(){
+		blockDropper += 1;
+		if(blockDropper == 150){
+			addBlock();
+			blockDropper = 0;
+		}
+	}
+	
+	private void addBlock(){
+		blocks b = new blocks(randomColor(), randomSide());
+		
+		blocksAL.add(b);
+	}
+	
+	private int randomColor(){
+		return (int) Math.floor(Math.random()*4);
+	}
+	
+	private int randomSide(){
+		return (int) Math.floor(Math.random()*6);
 	}
 	
 	public void paintComponent(Graphics g){ //creating the shapes for the game
@@ -44,6 +70,15 @@ public class graphicSettings extends JPanel implements ActionListener{
 	    graphics.rotate(Math.toRadians(rotation)); //allows rotation
 	    graphics.setColor(Color.GRAY); //change color
 	    graphics.fill(hex); //create the shape and fill the color
+	    
+	    for(int i = 0; i < blocksAL.size(); i++){
+	    	blocksAL.get(i).updateHeight();
+	    	graphics.setTransform(at);
+	    	graphics.translate(640, (360 + blocksAL.get(i).getHeight()));
+	    	graphics.rotate(Math.toRadians(rotation + blocksAL.get(i).getSide()*60));
+	    	graphics.setColor(blocksAL.get(i).getColor());
+	    	graphics.fill(blocksAL.get(i).getPolygon());
+	    }
 	}
 
 	@Override
@@ -51,6 +86,7 @@ public class graphicSettings extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(pause != true){
 			hexRotation();
+			blockDropper();
 			repaint();
 		}
 	}

@@ -10,6 +10,7 @@ public class hextrisView {
 	JFrame newGame = new JFrame("Hextris");
 	graphicSettings gS = new graphicSettings();
 	hexagon h = new hexagon();
+	//blocks b = new block();
 	
 	public hextrisView(){
 		setFrame(newGame);
@@ -31,6 +32,7 @@ public class hextrisView {
 		gS.t.start();
 		h.createHex();
 		gS.addHex(h.bgHex, h.hex);
+		//gS.addBlock();
 		frame.add(gS);
 	}
 	
