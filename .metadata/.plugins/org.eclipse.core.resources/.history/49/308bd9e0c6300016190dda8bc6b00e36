@@ -1,6 +1,0 @@
-import java.awt.Polygon;
-
-public class hexagon {
-
-	Polygon bgHex = new Polygon();
-}

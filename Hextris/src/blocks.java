@@ -6,7 +6,10 @@ public class blocks{
 	private int orderNum; //keeps track of this block
 	private int colorNum; //keeps track of the color of this block
 	private int side;
+	private int side2;
 	private int height = -250;
+	
+	private boolean falling = true;
 	
 	private Polygon block = new Polygon(); //create the blocks
 
@@ -15,6 +18,7 @@ public class blocks{
 		//orderNum = num;
 		colorNum = color;
 		this.side = side;
+		this.side2 = side;
 		
 		block = createBlock(block, side);
 	}
@@ -36,6 +40,35 @@ public class blocks{
 	
 	public int getSide(){
 		return side;
+	}
+	
+	public void rotateSide(int topSide){
+		/*if(height != 0){//how to maintain the blocks original rotation angle
+			side2 = 
+		}/*
+		
+		/*if(height != 0){
+			if(left == true){
+				if(side2 == 5){
+					side2 = 0;
+				}
+				else{
+					side2 += 1;
+				}
+			}
+			else{
+				if(side2 == 0){
+					side2 = 5;
+				}
+				else{
+					side2 -= 1;
+				}
+			}
+		}*/
+	}
+	
+	public void setSide(){
+		side = side2;
 	}
 	
 	public int getNum(){
@@ -67,6 +100,14 @@ public class blocks{
 	
 	public void updateHeight(){
 		height += 0.5;
+	}
+	
+	public boolean isFalling(){
+		return falling;
+	}
+	
+	public void setFalling(boolean setFall){
+		falling = setFall;
 	}
 	
 	public void remove(){

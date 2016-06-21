@@ -1,0 +1,138 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Polygon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+
+import javax.swing.*;
+
+public class graphicSettings extends JPanel implements ActionListener{
+	
+	Graphics2D graphics; //graphic settings of hextris
+	
+	Timer t = new Timer(5, (ActionListener) this);
+	
+	private int rotation = 0;
+	private int blockDropper = 0;
+	private int topSide = 0;
+	
+	public int turn = 0;
+	
+	public boolean pause;
+	public boolean left;
+	
+	ArrayList<blocks> blocksAL = new ArrayList<blocks>();
+	
+	private Polygon bgHex, hex;
+	
+	public void addHex(Polygon bgHex, Polygon hex){
+		this.bgHex = bgHex;
+		this.hex = hex;
+		addBlock();
+	}
+	
+	private void blockDropper(){
+		blockDropper += 1;
+		if(blockDropper == 150){
+			addBlock();
+			blockDropper = 0;
+		}
+	}
+	
+	private void addBlock(){
+		blocks b = new blocks(randomColor(), randomSide());
+		
+		blocksAL.add(b);
+	}
+	
+	private int randomColor(){
+		return (int) Math.floor(Math.random()*4);
+	}
+	
+	private int randomSide(){
+		return (int) Math.floor(Math.random()*6);
+	}
+	
+	public void paintComponent(Graphics g){ //creating the shapes for the game
+		super.paintComponent(g); //paintComponent is used to make the shapes
+		
+		graphics = (Graphics2D) g; //create graphic properties for the shape
+	    
+	    graphics.translate(640, 360); //centre the shape
+	    graphics.setColor(Color.DARK_GRAY);
+	    graphics.fill(bgHex);
+	    
+	    AffineTransform at = new AffineTransform(); //add affine transform to create movement within the shape
+	    
+	    graphics.setTransform(at); //add the affine transform to the shape
+	    graphics.translate(640, 360); //centre the shape
+	    graphics.rotate(Math.toRadians(rotation)); //allows rotation
+	    graphics.setColor(Color.GRAY); //change color
+	    graphics.fill(hex); //create the shape and fill the color
+	    
+	    for(int i = 0; i < blocksAL.size(); i++){
+	    	blocksAL.get(i).updateHeight();
+	    	graphics.setTransform(at);
+	    	graphics.translate(640, 360);
+	    	if(blocksAL.get(i).getHeight() == 0){
+	    		blocksAL.get(i).setSide();
+	    		graphics.rotate(Math.toRadians(rotation + blocksAL.get(i).getSide()*60));
+	    	}
+	    	else{
+	    		graphics.rotate(Math.toRadians(blocksAL.get(i).getSide()*60));
+	    	}
+	    	graphics.translate(0, blocksAL.get(i).getHeight());
+	    	graphics.setColor(blocksAL.get(i).getColor());
+	    	graphics.fill(blocksAL.get(i).getPolygon());
+	    }
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(pause != true){
+			hexRotation();
+			blockDropper();
+			repaint();
+		}
+		//System.out.println(blocksAL.get(0).getHeight());
+	}
+	
+	private void hexRotation(){
+		if(turn > 0){
+			if(left == true){
+				rotation -= 3;
+			}
+			else{
+				rotation += 3;
+			}
+			turn -= 3;
+		}
+	}
+	
+	public void hexSide(){
+		if(left == true){
+			if(topSide == 5){
+				topSide = 0;
+			}
+			else{
+				topSide += 1;
+			}
+		}
+		else{
+			if(topSide == 0){
+				topSide = 5;
+			}
+			else{
+				topSide -= 1;
+			}
+		}
+		
+		for(int i = 0; i < blocksAL.size(); i++){
+			blocksAL.get(i).rotateSide(topSide);
+		}
+	}
+}

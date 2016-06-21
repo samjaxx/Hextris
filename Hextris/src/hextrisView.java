@@ -61,11 +61,13 @@ public class hextrisView {
 					if(e.getKeyCode()==37){ //if left is pushed
 						gS.left = true; //choose left
 						gS.turn = 60;
+						gS.hexSide();
 						System.out.println(gS.left);
 					}
 					else if(e.getKeyCode()==39){ //if right is pushed
 						gS.left = false; //choose right
 						gS.turn = 60;
+						gS.hexSide();
 						System.out.println(gS.left);
 					}
 				}
