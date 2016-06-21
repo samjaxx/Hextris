@@ -97,7 +97,7 @@ public class graphicSettings extends JPanel implements ActionListener{
 		if(pause != true){
 			hexRotation();
 			blockSide();
-			blockDropper();
+			//blockDropper();
 			repaint();
 		}
 		//System.out.println(blocksAL.get(0).getHeight());

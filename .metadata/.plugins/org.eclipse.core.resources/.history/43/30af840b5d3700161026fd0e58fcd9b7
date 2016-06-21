@@ -105,7 +105,7 @@ public class graphicSettings extends JPanel implements ActionListener{
 	
 	private void blockSide(){
 		for(int i = 0; i < blocksAL.size(); i++){
-			blocksAL.get(i).rotateSide(topSide);
+			blocksAL.get(i).rotateSide(left, topSide);
 		}
 	}
 	
